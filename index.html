@@ -4,64 +4,123 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Petshop Amigo Fiel | Início</title>
+
+  <!-- Tipografia da marca -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5.3 (CSS) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Identidade visual própria do Petshop Amigo Fiel (carregada depois do Bootstrap para poder sobrescrevê-lo) -->
+  <link rel="stylesheet" href="css/estilo.css">
 </head>
 <body>
 
+  <!-- Link de acessibilidade: permite pular a navegação repetida via teclado -->
+  <a href="#conteudo-principal" class="visually-hidden-focusable skip-link">Pular para o conteúdo principal</a>
+
   <!-- HEADER PADRÃO - manter idêntico em todas as páginas (index, produtos, servicos, contato) -->
-  <header>
-    <div class="container">
-      <a href="index.html" class="logo-link">
-        <img src="images/layout/logo-petshop.png" alt="Logotipo do Petshop Amigo Fiel" class="logo">
-        <span class="site-title">Petshop Amigo Fiel</span>
-      </a>
-      <nav class="navbar">
-        <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
-          <li class="nav-item"><a class="nav-link" href="produtos.html">Produtos</a></li>
-          <li class="nav-item"><a class="nav-link" href="servicos.html">Serviços</a></li>
-          <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
-        </ul>
-      </nav>
-    </div>
+  <header class="navbar-petshop">
+    <nav class="navbar navbar-expand-lg navbar-petshop" aria-label="Navegação principal">
+      <div class="container">
+        <a href="index.html" class="navbar-brand logo-link d-flex align-items-center gap-2">
+          <img src="images/layout/logo-petshop.png" alt="Logotipo do Petshop Amigo Fiel" class="logo">
+          <span class="site-title">Petshop Amigo Fiel</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal"
+          aria-controls="menuPrincipal" aria-expanded="false" aria-label="Abrir menu de navegação">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menuPrincipal">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-lg-2">
+            <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
+            <li class="nav-item"><a class="nav-link" href="produtos.html">Produtos</a></li>
+            <li class="nav-item"><a class="nav-link" href="servicos.html">Serviços</a></li>
+            <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
   </header>
   <!-- FIM DO HEADER PADRÃO -->
 
-  <main>
+  <main id="conteudo-principal" tabindex="-1">
     <div class="container">
 
       <section class="hero">
         <h1>Bem-vindo ao Petshop Amigo Fiel</h1>
+        <span class="marca-linha" aria-hidden="true"></span>
+        <p id="saudacao-dinamica" role="status"></p>
         <p>
           Cuidamos do seu pet com carinho: produtos de qualidade para acessórios, alimentação
           e higiene, além dos serviços de banho e tosa, com opção de tele-busca ou entrega no local.
         </p>
       </section>
-      <section id="carrossel-banners" class="banners">
-        <h2>Destaques</h2>
-        <ul class="banner-list">
-          <li>
-            <img src="images/banner/banner-boas-vindas.jpg" alt="Banner de boas-vindas ao petshop, com cães e gatos felizes">
-          </li>
-          <li>
-            <img src="images/banner/banner-promocao-banho-tosa.jpg" alt="Banner de promoção dos serviços de banho e tosa">
-          </li>
-          <li>
-            <img src="images/banner/banner-novos-produtos.jpg" alt="Banner destacando novos produtos do petshop">
-          </li>
-        </ul>
+
+      <!-- Carrossel Bootstrap com os destaques do petshop -->
+      <section class="banners" aria-label="Destaques do petshop">
+        <h2 class="visually-hidden">Destaques</h2>
+        <div id="carrossel-banners" class="carousel slide mb-5" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carrossel-banners" data-bs-slide-to="0" class="active"
+              aria-current="true" aria-label="Slide 1: boas-vindas"></button>
+            <button type="button" data-bs-target="#carrossel-banners" data-bs-slide-to="1"
+              aria-label="Slide 2: promoção de banho e tosa"></button>
+            <button type="button" data-bs-target="#carrossel-banners" data-bs-slide-to="2"
+              aria-label="Slide 3: novos produtos"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="images/banner/banner-boas-vindas.jpg" class="d-block w-100"
+                alt="Banner de boas-vindas ao petshop, com cães e gatos felizes">
+              <div class="carousel-caption d-none d-md-block">
+                <p class="mb-0">Seja bem-vindo ao Amigo Fiel!</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="images/banner/banner-promocao-banho-tosa.jpg" class="d-block w-100"
+                alt="Banner de promoção dos serviços de banho e tosa">
+              <div class="carousel-caption d-none d-md-block">
+                <p class="mb-0">Promoção em banho e tosa este mês.</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="images/banner/banner-novos-produtos.jpg" class="d-block w-100"
+                alt="Banner destacando novos produtos do petshop">
+              <div class="carousel-caption d-none d-md-block">
+                <p class="mb-0">Confira as novidades em acessórios e ração.</p>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carrossel-banners" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carrossel-banners" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Próximo</span>
+          </button>
+        </div>
       </section>
+
       <section class="resumo">
         <h2>O que oferecemos</h2>
-        <div class="row">
-          <article class="col">
-            <h3>Produtos</h3>
-            <p>Acessórios, rações não perecíveis e produtos de higiene e limpeza para o seu pet.</p>
-            <a href="produtos.html">Ver produtos</a>
+        <div class="row g-4">
+          <article class="col-md-6">
+            <div class="card produto-card h-100 p-3">
+              <h3 class="card-title">Produtos</h3>
+              <p class="card-text">Acessórios, rações não perecíveis e produtos de higiene e limpeza para o seu pet.</p>
+              <a href="produtos.html" class="btn btn-petshop-primario align-self-start">Ver produtos</a>
+            </div>
           </article>
-          <article class="col">
-            <h3>Serviços</h3>
-            <p>Banho e tosa, com opção de tele-busca ou entrega no local.</p>
-            <a href="servicos.html">Ver serviços</a>
+          <article class="col-md-6">
+            <div class="card servico-card h-100 p-3">
+              <h3 class="card-title">Serviços</h3>
+              <p class="card-text">Banho e tosa, com opção de tele-busca ou entrega no local.</p>
+              <a href="servicos.html" class="btn btn-petshop-secundario align-self-start">Ver serviços</a>
+            </div>
           </article>
         </div>
       </section>
@@ -71,9 +130,9 @@
   <!-- FOOTER PADRÃO - manter idêntico em todas as páginas -->
   <footer>
     <div class="container">
-      <p>Desenvolvido por Bruno Saldanha Poltosi — Projeto da disciplina Fundamentos de Sistemas Web.</p>
-      <p>Contato: (51) 0000-0000 | contato@petshopamigofiel.com.br | Av. Exemplo, 123 - Porto Alegre, RS</p>
-      <nav>
+      <p>Desenvolvido por Bruno Saldanha Poltosi — Projeto da disciplina Fundamentos de Sistemas Web. &copy; <span id="ano-atual"></span></p>
+      <p>Contato: <a href="tel:+555100000000">(51) 0000-0000</a> | <a href="mailto:contato@petshopamigofiel.com.br">contato@petshopamigofiel.com.br</a> | Av. Exemplo, 123 - Porto Alegre, RS</p>
+      <nav aria-label="Navegação do rodapé">
         <ul class="footer-nav">
           <li><a href="index.html">Início</a></li>
           <li><a href="produtos.html">Produtos</a></li>
@@ -84,5 +143,9 @@
     </div>
   </footer>
   <!-- FIM DO FOOTER PADRÃO -->
+
+  <!-- Bootstrap Bundle (inclui Popper, necessário para o navbar e o carrossel) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

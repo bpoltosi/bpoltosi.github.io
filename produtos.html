@@ -4,99 +4,159 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Petshop Amigo Fiel | Produtos</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilo.css">
 </head>
 <body>
 
+  <a href="#conteudo-principal" class="visually-hidden-focusable skip-link">Pular para o conteúdo principal</a>
+
   <!-- HEADER PADRÃO - manter idêntico em todas as páginas (index, produtos, servicos, contato) -->
-  <header>
-    <div class="container">
-      <a href="index.html" class="logo-link">
-        <img src="images/layout/logo-petshop.png" alt="Logotipo do Petshop Amigo Fiel" class="logo">
-        <span class="site-title">Petshop Amigo Fiel</span>
-      </a>
-      <nav class="navbar">
-        <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
-          <li class="nav-item"><a class="nav-link" href="produtos.html">Produtos</a></li>
-          <li class="nav-item"><a class="nav-link" href="servicos.html">Serviços</a></li>
-          <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
-        </ul>
-      </nav>
-    </div>
+  <header class="navbar-petshop">
+    <nav class="navbar navbar-expand-lg navbar-petshop" aria-label="Navegação principal">
+      <div class="container">
+        <a href="index.html" class="navbar-brand logo-link d-flex align-items-center gap-2">
+          <img src="images/layout/logo-petshop.png" alt="Logotipo do Petshop Amigo Fiel" class="logo">
+          <span class="site-title">Petshop Amigo Fiel</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal"
+          aria-controls="menuPrincipal" aria-expanded="false" aria-label="Abrir menu de navegação">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menuPrincipal">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-lg-2">
+            <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
+            <li class="nav-item"><a class="nav-link" href="produtos.html">Produtos</a></li>
+            <li class="nav-item"><a class="nav-link" href="servicos.html">Serviços</a></li>
+            <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
   </header>
   <!-- FIM DO HEADER PADRÃO -->
 
-  <main>
+  <main id="conteudo-principal" tabindex="-1">
     <div class="container">
       <h1>Nossos Produtos</h1>
+
+      <!-- Filtro por categoria + busca: puramente do lado do cliente (sem backend) -->
+      <div class="filtro-produtos">
+        <div class="row g-3 align-items-end">
+          <div class="col-lg-8">
+            <fieldset class="border-0 p-0 m-0">
+              <legend class="h6 mb-2">Filtrar por categoria</legend>
+              <div class="btn-group flex-wrap" role="group" aria-label="Filtrar produtos por categoria">
+                <input type="radio" class="btn-check" name="filtro-categoria" id="filtro-todos"
+                  value="todos" data-filtro-categoria checked>
+                <label class="btn btn-filtro me-2 mb-2" for="filtro-todos">Todos</label>
+
+                <input type="radio" class="btn-check" name="filtro-categoria" id="filtro-acessorios"
+                  value="categoria-acessorios" data-filtro-categoria>
+                <label class="btn btn-filtro me-2 mb-2" for="filtro-acessorios">Acessórios</label>
+
+                <input type="radio" class="btn-check" name="filtro-categoria" id="filtro-racao"
+                  value="categoria-racao" data-filtro-categoria>
+                <label class="btn btn-filtro me-2 mb-2" for="filtro-racao">Rações não perecíveis</label>
+
+                <input type="radio" class="btn-check" name="filtro-categoria" id="filtro-higiene"
+                  value="categoria-higiene" data-filtro-categoria>
+                <label class="btn btn-filtro me-2 mb-2" for="filtro-higiene">Higiene e limpeza</label>
+              </div>
+            </fieldset>
+          </div>
+          <div class="col-lg-4">
+            <label for="busca-produto" class="form-label">Buscar produto</label>
+            <input type="search" id="busca-produto" name="busca-produto" class="form-control"
+              placeholder="Ex.: cama, ração, tapete...">
+          </div>
+        </div>
+      </div>
 
       <!-- Categoria: Acessórios (mínimo 2 produtos) -->
       <section class="categoria" id="categoria-acessorios">
         <h2>Acessórios</h2>
-        <div class="row">
+        <div class="row row-cols-1 row-cols-md-2 g-4">
 
-          <article class="card produto-card col">
-            <img src="images/produtos/acessorio-mordedor-corda.jpg" alt="Brinquedo mordedor de corda colorido para cães" class="card-img">
-            <div class="card-body">
-              <h3 class="card-title">Brinquedo Mordedor de Corda</h3>
-              <p class="card-text">Brinquedo resistente em corda trançada, ideal para cães de todos os portes.</p>
-              <p class="preco">R$ 24,90</p>
+          <article class="col">
+            <div class="card produto-card h-100">
+              <img src="images/produtos/acessorio-mordedor-corda.jpg" alt="Brinquedo mordedor de corda colorido para cães" class="card-img">
+              <div class="card-body d-flex flex-column">
+                <h3 class="card-title">Brinquedo Mordedor de Corda</h3>
+                <p class="card-text">Brinquedo resistente em corda trançada, ideal para cães de todos os portes.</p>
+                <p class="preco mt-auto">R$ 24,90</p>
+              </div>
             </div>
           </article>
 
-          <article class="card produto-card col">
-            <img src="images/produtos/acessorio-cama-pet.jpg" alt="Cama pet confort redonda na cor bege" class="card-img">
-            <div class="card-body">
-              <h3 class="card-title">Cama Pet Confort Redonda</h3>
-              <p class="card-text">Cama redonda acolchoada, macia e confortável, ideal para o descanso do seu pet.</p>
-              <p class="preco">R$ 89,90</p>
+          <article class="col">
+            <div class="card produto-card h-100">
+              <img src="images/produtos/acessorio-cama-pet.jpg" alt="Cama pet confort redonda na cor bege" class="card-img">
+              <div class="card-body d-flex flex-column">
+                <h3 class="card-title">Cama Pet Confort Redonda</h3>
+                <p class="card-text">Cama redonda acolchoada, macia e confortável, ideal para o descanso do seu pet.</p>
+                <p class="preco mt-auto">R$ 89,90</p>
+              </div>
             </div>
           </article>
         </div>
       </section>
 
       <!-- Categoria: Rações não perecíveis (mínimo 2 produtos) -->
-      <section class="categoria" id="categoria-racao">
+      <section class="categoria mt-5" id="categoria-racao">
         <h2>Rações não perecíveis</h2>
-        <div class="row">
+        <div class="row row-cols-1 row-cols-md-2 g-4">
 
-          <article class="card produto-card col">
-            <img src="images/produtos/racao-caes-adultos.jpg" alt="Pacote de ração premium para cães adultos, 15kg" class="card-img">
-            <div class="card-body">
-              <h3 class="card-title">Ração Premium Cães Adultos 15kg</h3>
-              <p class="card-text">Ração completa e balanceada para cães adultos de todas as raças.</p>
-              <p class="preco">R$ 189,90</p>
+          <article class="col">
+            <div class="card produto-card h-100">
+              <img src="images/produtos/racao-caes-adultos.jpg" alt="Pacote de ração premium para cães adultos, 15kg" class="card-img">
+              <div class="card-body d-flex flex-column">
+                <h3 class="card-title">Ração Premium Cães Adultos 15kg</h3>
+                <p class="card-text">Ração completa e balanceada para cães adultos de todas as raças.</p>
+                <p class="preco mt-auto">R$ 189,90</p>
+              </div>
             </div>
           </article>
-          <article class="card produto-card col">
-            <img src="images/produtos/racao-gatos-filhotes.jpg" alt="Pacote de ração para gatos filhotes, 3kg" class="card-img">
-            <div class="card-body">
-              <h3 class="card-title">Ração Gatos Filhotes 3kg</h3>
-              <p class="card-text">Ração especialmente formulada para o crescimento saudável de gatos filhotes.</p>
-              <p class="preco">R$ 59,90</p>
+          <article class="col">
+            <div class="card produto-card h-100">
+              <img src="images/produtos/racao-gatos-filhotes.jpg" alt="Pacote de ração para gatos filhotes, 3kg" class="card-img">
+              <div class="card-body d-flex flex-column">
+                <h3 class="card-title">Ração Gatos Filhotes 3kg</h3>
+                <p class="card-text">Ração especialmente formulada para o crescimento saudável de gatos filhotes.</p>
+                <p class="preco mt-auto">R$ 59,90</p>
+              </div>
             </div>
           </article>
         </div>
       </section>
 
       <!-- Categoria: Produtos de higiene e limpeza (mínimo 2 produtos) -->
-      <section class="categoria" id="categoria-higiene">
+      <section class="categoria mt-5" id="categoria-higiene">
         <h2>Higiene e limpeza</h2>
-        <div class="row">
-          <article class="card produto-card col">
-            <img src="images/produtos/tapete-higienico.jpg" alt="Pacote de tapetes higiênicos super secantes" class="card-img">
-            <div class="card-body">
-              <h3 class="card-title">Tapete Higiênico Super Secante (30 un.)</h3>
-              <p class="card-text">Tapetes com alto poder de absorção, indicados para pets de todas as idades.</p>
-              <p class="preco">R$ 39,90</p>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+          <article class="col">
+            <div class="card produto-card h-100">
+              <img src="images/produtos/tapete-higienico.jpg" alt="Pacote de tapetes higiênicos super secantes" class="card-img">
+              <div class="card-body d-flex flex-column">
+                <h3 class="card-title">Tapete Higiênico Super Secante (30 un.)</h3>
+                <p class="card-text">Tapetes com alto poder de absorção, indicados para pets de todas as idades.</p>
+                <p class="preco mt-auto">R$ 39,90</p>
+              </div>
             </div>
           </article>
-          <article class="card produto-card col">
-            <img src="images/produtos/fralda-caes.jpg" alt="Pacote de fraldas descartáveis para cães" class="card-img">
-            <div class="card-body">
-              <h3 class="card-title">Fralda Descartável para Cães (30 un.)</h3>
-              <p class="card-text">Fraldas práticas e confortáveis, ideais para cães idosos ou em treinamento.</p>
-              <p class="preco">R$ 99,90</p>
+          <article class="col">
+            <div class="card produto-card h-100">
+              <img src="images/produtos/fralda-caes.jpg" alt="Pacote de fraldas descartáveis para cães" class="card-img">
+              <div class="card-body d-flex flex-column">
+                <h3 class="card-title">Fralda Descartável para Cães (30 un.)</h3>
+                <p class="card-text">Fraldas práticas e confortáveis, ideais para cães idosos ou em treinamento.</p>
+                <p class="preco mt-auto">R$ 99,90</p>
+              </div>
             </div>
           </article>
         </div>
@@ -107,9 +167,9 @@
   <!-- FOOTER PADRÃO - manter idêntico em todas as páginas -->
   <footer>
     <div class="container">
-      <p>Desenvolvido por Bruno Saldanha Poltosi — Projeto da disciplina Fundamentos de Sistemas Web.</p>
-      <p>Contato: (51) 0000-0000 | contato@petshopamigofiel.com.br | Av. Exemplo, 123 - Porto Alegre, RS</p>
-      <nav>
+      <p>Desenvolvido por Bruno Saldanha Poltosi — Projeto da disciplina Fundamentos de Sistemas Web. &copy; <span id="ano-atual"></span></p>
+      <p>Contato: <a href="tel:+555100000000">(51) 0000-0000</a> | <a href="mailto:contato@petshopamigofiel.com.br">contato@petshopamigofiel.com.br</a> | Av. Exemplo, 123 - Porto Alegre, RS</p>
+      <nav aria-label="Navegação do rodapé">
         <ul class="footer-nav">
           <li><a href="index.html">Início</a></li>
           <li><a href="produtos.html">Produtos</a></li>
@@ -120,5 +180,9 @@
     </div>
   </footer>
   <!-- FIM DO FOOTER PADRÃO -->
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/produtos.js"></script>
 </body>
 </html>
